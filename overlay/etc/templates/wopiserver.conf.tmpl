@@ -1,0 +1,20 @@
+[general]
+storagetype = {{ getenv "WOPISERVER_STORAGE_TYPE" "local" }}
+internalserver = waitress
+port = 8880
+nonofficetypes = .md .zmd .txt
+wopiurl = {{ getenv "WOPISERVER_WOPI_URL" "http://localhost" }}
+downloadurl = {{ getenv "WOPISERVER_DOWNLOAD_URL" "http://localhost" }}
+tokenvalidity = 86400
+wopilockexpiration = 1800
+loglevel = {{ getenv "WOPISERVER_LOG_LEVEL" "Error" | strings.Title }}
+loghandler = stream
+
+[security]
+usehttps = no
+
+wopisecretfile = /etc/wopi/wopisecret
+iopsecretfile = /etc/wopi/iopsecret
+
+[local]
+storagehomepath = /var/wopi_local_storage

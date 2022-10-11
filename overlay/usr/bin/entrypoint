@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+# shellcheck disable=SC3040
+set -eo pipefail
+
+# shellcheck disable=SC1091,SC3046
+source /usr/local/lib/log.sh
+
+/usr/local/bin/gomplate -o /etc/wopi/wopiserver.conf -f /etc/templates/wopiserver.conf.tmpl
+
+if [ -n "$WOPISERVER_WOPI_SECRET" ] && [ ! -f /etc/wopi/wopisecret ]; then
+    echo "$WOPISERVER_WOPI_SECRET" >/etc/wopi/wopisecret
+fi
+if [ -n "$WOPISERVER_IOP_SECRET" ] && [ ! -f /etc/wopi/iopsecret ]; then
+    echo "$WOPISERVER_IOP_SECRET" >/etc/wopi/iopsecret
+fi
+
+log_info "Start Wopiserver\n"
+exec /app/wopiserver.py

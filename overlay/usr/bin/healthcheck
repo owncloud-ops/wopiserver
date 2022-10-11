@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+# shellcheck disable=SC3040
+set -eo pipefail
+
+URL=http://127.0.0.1:8880/wopi
+wget --quiet --tries=1 --spider ${URL} || exit 1
+
+exit 0
