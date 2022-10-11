@@ -1,4 +1,4 @@
-FROM cs3org/wopiserver:v9.1.1
+FROM cs3org/wopiserver:v9.1.0
 
 LABEL maintainer="ownCloud GmbH"
 LABEL org.opencontainers.image.authors="ownCloud GmbH"
