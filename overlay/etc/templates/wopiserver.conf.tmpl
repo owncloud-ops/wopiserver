@@ -1,5 +1,8 @@
+{{- $storagetype := getenv "WOPISERVER_STORAGE_TYPE" "local" | strings.ToLower -}}
+{{- $allowed := coll.Slice "local" "cs3" -}}
+{{- assert "configured storagetype not supported" (has $allowed $storagetype) -}}
 [general]
-storagetype = {{ getenv "WOPISERVER_STORAGE_TYPE" "local" }}
+storagetype = {{ $storagetype }}
 internalserver = waitress
 port = 8880
 nonofficetypes = .md .zmd .txt
@@ -13,8 +16,24 @@ loghandler = stream
 [security]
 usehttps = no
 
-wopisecretfile = /etc/wopi/wopisecret
-iopsecretfile = /etc/wopi/iopsecret
+[bridge]
+sslverify = {{ getenv "WOPISERVER_BRIDGE_SSL_VERIFY" "True" | conv.ToBool }}
+
+saveinterval = 200
+unlockinterval = 90
+disablezip = {{ getenv "WOPISERVER_BRIDGE_DISABLE_ZIP" "False" | conv.ToBool }}
+
+[io]
+chunksize = 4194304
+recoverypath = /var/spool/wopirecovery
+{{- if eq $storagetype "local" }}
 
 [local]
 storagehomepath = /var/wopi_local_storage
+{{- else if eq $storagetype "cs3" }}
+
+[cs3]
+revagateway = your-reva-gateway-server.org:port
+authtokenvalidity = 3600
+sslverify = {{ getenv "WOPISERVER_CS3_SSL_VERIFY" "True" | conv.ToBool }}
+{{- end }}

@@ -16,17 +16,25 @@ Custom container image for Wopiserver.
 ## Environment Variables
 
 ```Shell
+# Valid values are: local, cs3
 WOPISERVER_STORAGE_TYPE=local
-WOPISERVER_WOPI_URL=http://localhost
-WOPISERVER_DOWNLOAD_URL=http://localhost
 # Valid values are: debug, info, warning, error
 WOPISERVER_LOG_LEVEL=error
+
+WOPISERVER_WOPI_URL=http://localhost
+WOPISERVER_DOWNLOAD_URL=http://localhost
 
 # These secrets are required, otherwise the container won't start up. It's also possible to mount
 # these files to /etc/wopi/wopisecret and /etc/wopi/wopisecret and /etc/wopi/iopsecret to fulfill
 # the requirement.
 WOPISERVER_WOPI_SECRET=
 WOPISERVER_IOP_SECRET=
+
+WOPISERVER_BRIDGE_SSL_VERIFY=True
+WOPISERVER_BRIDGE_DISABLE_ZIP=False
+
+# Only applies on storage type 'cs3'.
+WOPISERVER_CS3_SSL_VERIFY=True
 ```
 
 ## Build
