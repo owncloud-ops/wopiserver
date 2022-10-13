@@ -33,7 +33,7 @@ storagehomepath = /var/wopi_local_storage
 {{- else if eq $storagetype "cs3" }}
 
 [cs3]
-revagateway = your-reva-gateway-server.org:port
+revagateway = {{ getenv "WOPISERVER_CS3_REVA_GATEWAY" }}
 authtokenvalidity = 3600
 sslverify = {{ getenv "WOPISERVER_CS3_SSL_VERIFY" "True" | conv.ToBool }}
 {{- end }}
