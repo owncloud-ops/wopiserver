@@ -12,6 +12,7 @@ Custom container image for Wopiserver.
 ## Volumes
 
 - /var/wopi_local_storage
+- /var/spool/wopirecovery
 
 ## Environment Variables
 
@@ -23,6 +24,11 @@ WOPISERVER_LOG_LEVEL=error
 
 WOPISERVER_WOPI_URL=http://localhost
 WOPISERVER_DOWNLOAD_URL=http://localhost
+
+# If set, 'WOPISERVER_PROXY_SECRET' is also required.
+WOPISERVER_PROXY_URL=
+WOPISERVER_PROXY_SECRET=
+WOPISERVER_PROXY_APP_NAME=Office365
 
 # These secrets are required, otherwise the container won't start up. It's also possible to mount
 # these files to /etc/wopi/wopisecret and /etc/wopi/wopisecret and /etc/wopi/iopsecret to fulfill
