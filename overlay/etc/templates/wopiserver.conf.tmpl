@@ -12,6 +12,12 @@ tokenvalidity = 86400
 wopilockexpiration = 1800
 loglevel = {{ getenv "WOPISERVER_LOG_LEVEL" "Error" | strings.Title }}
 loghandler = stream
+{{- if getenv "WOPISERVER_PROXY_URL" }}
+
+wopiproxy = {{ getenv "WOPISERVER_PROXY_URL" }}
+wopiproxysecretfile = /etc/wopi/proxysecret
+proxiedappname = {{ getenv "WOPISERVER_PROXY_APP_NAME" "Office365" }}
+{{- end }}
 
 [security]
 usehttps = no

@@ -14,6 +14,9 @@ fi
 if [ -n "$WOPISERVER_IOP_SECRET" ] && [ ! -f /etc/wopi/iopsecret ]; then
     echo "$WOPISERVER_IOP_SECRET" >/etc/wopi/iopsecret
 fi
+if [ -n "$WOPISERVER_PROXY_SECRET" ] && [ ! -f /etc/wopi/proxysecret ]; then
+    echo "$WOPISERVER_PROXY_SECRET" >/etc/wopi/proxysecret
+fi
 
 log_info "Start Wopiserver\n"
 exec /app/wopiserver.py
