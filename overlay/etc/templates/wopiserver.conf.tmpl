@@ -17,6 +17,7 @@ loghandler = stream
 wopiproxy = {{ getenv "WOPISERVER_PROXY_URL" }}
 wopiproxysecretfile = /etc/wopi/proxysecret
 proxiedappname = {{ getenv "WOPISERVER_PROXY_APP_NAME" "Office365" }}
+businessflow = {{ getenv "WOPISERVER_PROXY_BUSINESS_FLOW" "False" | conv.ToBool }}
 {{- end }}
 
 [security]
