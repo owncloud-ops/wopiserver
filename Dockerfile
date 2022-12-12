@@ -1,4 +1,4 @@
-FROM cs3org/wopiserver:v9.3.0@sha256:c318f8bb053bb8ccbe0d586c6fe126c458b752639c918e17853474e918c72f9f
+FROM cs3org/wopiserver:v9.3.2@sha256:9dbb6fc5ad8d9d1fa48bb403158483a1406ca70ee2af76a079e8c8897b0a1e3a
 
 LABEL maintainer="ownCloud GmbH"
 LABEL org.opencontainers.image.authors="ownCloud GmbH"
