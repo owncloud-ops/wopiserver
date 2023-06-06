@@ -10,6 +10,10 @@ wopiurl = {{ getenv "WOPISERVER_WOPI_URL" "http://localhost" }}
 downloadurl = {{ getenv "WOPISERVER_DOWNLOAD_URL" "http://localhost" }}
 tokenvalidity = 86400
 wopilockexpiration = 1800
+# Not supported with oCIS, must always be set to "False"
+enablerename = False
+# Not supported with oCIS, must always be set to "False"
+detectexternallocks = False
 loglevel = {{ getenv "WOPISERVER_LOG_LEVEL" "Error" | strings.Title }}
 loghandler = stream
 {{- if getenv "WOPISERVER_PROXY_URL" }}
