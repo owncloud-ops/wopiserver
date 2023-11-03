@@ -19,10 +19,11 @@ ADD overlay/ /
 
 RUN addgroup -g 1001 -S app && \
     adduser -S -D -H -u 1001 -H -s /sbin/nologin -G app -g app app && \
-    apk --update add --virtual .build-deps curl tar python-pkg && \
+    apk --update add --virtual .build-deps curl tar && \
     curl -SsfL -o /usr/local/bin/gomplate "https://github.com/hairyhenderson/gomplate/releases/download/${GOMPLATE_VERSION}/gomplate_linux-amd64-slim" && \
     curl -SsfL "https://github.com/owncloud-ops/container-library/releases/download/${CONTAINER_LIBRARY_VERSION}/container-library.tar.gz" | tar xz -C / && \
     chmod 755 /usr/local/bin/gomplate && \
+    pip install --upgrade werkzeug>=3.0.1 && \
     mkdir -p /var/spool/wopirecovery && \
     chown -R app:app /var/wopi_local_storage && \
     chown -R app:app /etc/wopi && \
