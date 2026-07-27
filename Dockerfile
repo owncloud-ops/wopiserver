@@ -1,4 +1,4 @@
-FROM docker.io/cs3org/wopiserver:v10.3.2@sha256:2a1e11393efe4c9b4fcf9a0c2e629e7eb667c1c386ce0141d555438c18fa068b
+FROM docker.io/cs3org/wopiserver:v11.4.3@sha256:a76334126d13fc64018d23335406fcbed51a9ae2e55a0ecf7931373e0af4c294
 
 LABEL maintainer="ownCloud GmbH"
 LABEL org.opencontainers.image.authors="ownCloud GmbH"
